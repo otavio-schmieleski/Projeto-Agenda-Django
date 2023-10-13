@@ -1,3 +1,4 @@
+# flake8: noqa
 import os
 import sys
 from datetime import datetime
@@ -21,8 +22,8 @@ if __name__ == '__main__':
 
     from contact.models import Category, Contact
 
-    Contact.objects.all().delete()
-    Category.objects.all().delete()
+    #Contact.objects.all().delete()
+    #Category.objects.all().delete()
 
     fake = faker.Faker('pt_BR')
     categories = ['Amigos', 'Família', 'Conhecidos']
@@ -39,7 +40,7 @@ if __name__ == '__main__':
         email = profile['mail']
         first_name, last_name = profile['name'].split(' ', 1)
         phone = fake.phone_number()
-        created_date: datetime = fake.date_this_year()
+        create_date: datetime = fake.date_this_year()
         description = fake.text(max_nb_chars=100)
         category = choice(django_categories)
 
@@ -49,11 +50,11 @@ if __name__ == '__main__':
                 last_name=last_name,
                 phone=phone,
                 email=email,
-                created_date=created_date,
+                create_date=create_date,
                 description=description,
                 category=category,
             )
         )
 
     if len(django_contacts) > 0:
-        Contact.objects.bulk_create(django_contacts)
+        Contact.objects.bulk_create(django_contacts) # salva tudo de uma vez
