@@ -50,7 +50,7 @@ if __name__ == '__main__':
                 last_name=last_name,
                 phone=phone,
                 email=email,
-                create_date=create_date,
+                created_date=create_date,
                 description=description,
                 category=category,
             )
